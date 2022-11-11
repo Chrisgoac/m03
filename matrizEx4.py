@@ -47,4 +47,4 @@ elif select == 1:
             
             input("\nPresiona enter para continuar...")
 else: 
-    print("Número incorrecto, aunque está validado de antes y no deberias ver nunca este mensaje...")    
+    print("Número incorrecto, aunque está validado de antes y no deberias ver nunca este mensaje...")
