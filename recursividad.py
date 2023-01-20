@@ -10,12 +10,12 @@ def mostrar_menu(menu):
     """
     for i in range(len(menu)):
         print(f"{i} - {menu[i]}")
-        
+
     select = int(input("Opción del menú deseada: "))
-    
-    return select    
-            
-        
+
+    return select
+
+
 def otro_metodo():
     selection = mostrar_menu(MENU)
     if selection == 0:
@@ -24,16 +24,9 @@ def otro_metodo():
         print("La opción 1")
     elif selection == 2:
         print("La opción 2")
-
     else:
         print("La opción no está dentro de las opciones disponibles.")
         otro_metodo()
-        
+
+
 otro_metodo()
-        
-        
-
-
-
-
-
