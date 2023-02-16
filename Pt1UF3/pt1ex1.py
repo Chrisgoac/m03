@@ -58,23 +58,19 @@ def get_numbers():
     return get_num
 
 
+def ret_lnames_lapellidos():
+    lista1 = tratar_nombres(0)
+    lista2 = tratar_nombres(1)
+    return lista1, lista2
+
+
 def new_fwithmaxnumber():
-    lista = []
+    nombres, apellidos = ret_lnames_lapellidos()
     get_num = get_numbers()
     f = open(f"Pt1UF3\\nombre_con_{get_num}_letras.txt", "w")
-    lista = tratar_nombres(1)
-    for i in lista:
-        f.write(f"{i}\n")
-    f.close()
-
-
-def new_fapellidos():
-    lista = []
-    
-    f = open("Pt1UF3\\nombre_con_{apellidos.txt", "w")
-    lista = tratar_nombres(1)
-    for i in lista:
-        f.write(f"{i}\n")
+    for i in range(len(nombres)):
+        if len(nombres[i]) <= get_num:
+            f.write(f"{nombres[i]} {apellidos[i]}\n")
     f.close()
 
 
