@@ -2,7 +2,7 @@ MENU_LIST = ["Salir", "Nuevo fichero con nombres", "Nuevo fichero con apellidos"
 def print_menu(lista, select=10):
     """
     Función que imprime el menú y pide una opción al usuario
-    :return: 
+    :return: La opción elegida
     """
     print("\t...: Menu :...")
     for i in range(len(lista)):
