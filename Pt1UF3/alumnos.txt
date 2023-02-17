@@ -1,6 +1,4 @@
-Christian-20 30 0 22 20 2
-Pepe-20
-Papichulo-202
-Penetrador-10
-Esteban-20
-Carlos-20 22
+Christian-9.0 1.2
+Pepito-8.2
+Esteban-7.0
+Carlitos-2.67
