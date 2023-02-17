@@ -3,7 +3,7 @@ def print_menu(lista, select=10):
     Función que imprime el menú y pide una opción al usuario
     :return: La opción deseada
     """
-    print("\t...: Menu :...")
+    print("\n\t...: Menu :...")
     for i in range(len(lista)):
         print(f"{i} - {lista[i]}")
 
@@ -125,11 +125,51 @@ def get_media_alumno(alumnos_dic, total=0):
     if alumno in alumnos_dic:
         print(f"Media de notas del alumno {alumno}:" , end=" ")
         for i in alumnos_dic[alumno]:
-            total = total + int(i)
+            total = total + float(i)
         print(f"{total / len(alumnos_dic[alumno])}")
     else:
         print("El alumno introducido no existe.")
         get_media_alumno(alumnos_dic)
+
+
+def alumnos_readlines():
+    """
+    Parametro que nos devuelve el contenido de alumnos.txt
+    :return: Todas las lineas del fichero
+    """
+    f = open("Pt1UF3\\alumnos.txt", 'r')
+    lineas = f.readlines()
+    f.close()
+    return lineas
+
+
+def erase_falumno(lineas, alumnos_dic, alumno):
+    """
+    Función que elimina a un alumno de alumnos.txt
+    :param lineas: Lineas del archvo alumnos
+    :param alumnos_dic: Diccionario con todos los alumnos
+    :param alumno: String del nombre del alumno
+    """
+    f = open("Pt1UF3\\alumnos.txt", 'w')
+    for i, j  in enumerate(lineas):
+        if i != list(alumnos_dic.keys()).index(alumno):
+            f.write(j)
+
+
+def erase_alumno(alumnos_dic, lineas=[]):
+    """
+    Función que elimina a un alumno del fichero.
+    :param alumnos_dic: Diccionario en el que se va a consultar.
+    """
+    alumno = input("Alumno que se desea eliminar: ")
+    if alumno == "X":
+        main_program(alumnos_dic)
+    if alumno not in alumnos_dic:
+       return erase_alumno(alumnos_dic)
+    lineas = alumnos_readlines()
+    erase_falumno(lineas, alumnos_dic, alumno)
+    alumnos_dic.pop(alumno)
+    return alumnos_dic
 
 
 def main_program(alumnos_dic):
@@ -151,8 +191,7 @@ def main_program(alumnos_dic):
         elif select == 4:
             get_media_alumno(alumnos_dic)
         elif select == 5:
-            pass
-        print(alumnos_dic)
+            alumnos_dic = erase_alumno(alumnos_dic)
     
 
 alumnos = load_data()
