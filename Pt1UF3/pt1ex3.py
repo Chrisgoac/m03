@@ -18,8 +18,6 @@ def print_menu(lista, select=10):
     return select
 
 
-#print_menu(MENU)
-
 def load_data():
     dic = {}
     f = open("Pt1UF3\\alumnos.txt", "r")
@@ -28,13 +26,14 @@ def load_data():
         dic[a[0]] = a[1].rstrip("\n").rsplit(" ")
     return dic
 
+
 def get_nota(get_num=0):
     """
     Esta función pide al usuario un número y verifica unos requisitos necesarios por el programa.
     :return: Devuelve el número seleccionado
     """
     try:
-        get_num = int(input("Introduce la primera nota del alumno: "))
+        get_num = int(input("Introduce la nota del alumno: "))
     except ValueError:
         get_nota()
     return get_num
@@ -74,23 +73,34 @@ def add_nota(alumnos_dic):
         print("El alumno introducido no existe.")
         add_nota(alumnos_dic)
         
-    
+
+def get_alumno(alumnos_dic):
+    alumno = input("Alumno que se desea buscar: ")
+    if alumno in alumnos_dic:
+        print(f"Notas del alumno {alumno}:" , end=" ")
+        for i in alumnos_dic[alumno]:
+            print(i, end=" ")
+    else:
+        print("El alumno introducido no existe.")
+        get_alumno(alumnos_dic)
+
 
 def main_program(alumnos_dic, lista_menu):
-    select = print_menu(lista_menu)
-    if select == 0:
-        exit("Has salido exitosamente del programa.")
-    elif select == 1:
-        add_alumno(alumnos_dic)
-    elif select == 2:
-        add_nota(alumnos_dic)
-    elif select == 3:
-        pass
-    elif select == 4:
-        pass
-    elif select == 5:
-        pass
-    print(alumnos_dic)
+    while True:
+        select = print_menu(lista_menu)
+        if select == 0:
+            exit("Has salido exitosamente del programa.")
+        elif select == 1:
+            add_alumno(alumnos_dic)
+        elif select == 2:
+            get_alumno(alumnos_dic)
+        elif select == 3:
+            add_nota(alumnos_dic)
+        elif select == 4:
+            pass
+        elif select == 5:
+            pass
+        print(alumnos_dic)
     
 
 alumnos = load_data()
