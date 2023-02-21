@@ -30,21 +30,6 @@ def load_data():
     return dic
 
 
-def get_nota():
-    """
-    Esta función pide al usuario un número y verifica unos requisitos necesarios por el programa.
-    :return: Devuelve el número seleccionado
-    """
-    get_num = 100
-    try:
-        get_num = float(input("Introduce la nota del alumno: "))
-        if get_num < 0 or get_num > 10:
-            raise ValueError
-    except ValueError:
-        return get_nota()
-    return get_num
-
-
 def export_data(alumnos_dic, op=1):
     """
     Función que exporta los datos de un diccionaro al archivo alumnos.txt
@@ -63,6 +48,21 @@ def export_data(alumnos_dic, op=1):
                 f.write(f"{j} ")
                 op = op+1
     f.close()
+
+
+def get_nota():
+    """
+    Esta función pide al usuario un número y verifica unos requisitos necesarios por el programa.
+    :return: Devuelve el número seleccionado
+    """
+    get_num = 100
+    try:
+        get_num = float(input("Introduce la nota del alumno: "))
+        if get_num < 0 or get_num > 10:
+            raise ValueError
+    except ValueError:
+        return get_nota()
+    return get_num
     
 
 def add_alumno(alumnos_dic):

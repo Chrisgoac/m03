@@ -33,7 +33,7 @@ def tratar_nombres(nombre_o_apellido):
     for i in range(num_lines):
         lista.append(f.readline().rstrip("\n").split(" ")[nombre_o_apellido])
     return lista
-
+ 
 
 def new_fnames():
     """
