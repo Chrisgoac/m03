@@ -38,9 +38,16 @@ def pedir_tirada(jugador):
     :param jugador: Jugador al que se le va a pedir la tirada. 
     :return: Coordenadas en las que se va a realizar la tirada.
     """
-    print(f"Usuario {jugador.nombre} es tu turno")
-    x = int(input("Posición x de la tirada: "))
-    y = int(input("Posición y de la tirada: "))
+    print(f"Usuario {jugador.nombre} es tu turno, elige las coordenadas en las que se va a disparar.")
+    try:
+        x = int(input("Posición x de la tirada: "))
+        y = int(input("Posición y de la tirada: "))
+
+        if (x < 0 or x > 4) or (y < 0 or y > 4):
+            print("ERROR: El valor solo puede estar entre 0 y 4.")
+            raise ValueError
+    except ValueError:
+        pedir_tirada(jugador)
     return x, y
 
 
