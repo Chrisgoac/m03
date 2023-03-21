@@ -28,18 +28,12 @@ La clase deberá estar en fichero separado de nuestro main.
 
 class Alumno:
 
-    __id = None
-    __nombre = None
-    __edad = None
-    __altura = None
-    __modulos = None
-
-    def __int__(self):
+    def __init__(self):
         self.__id = None
         self.__nombre = None
         self.__edad = None
         self.__altura = None
-        self.__modulos = None
+        self.modulos = None
 
 
     def load_data(self, id, nombre, edad, altura, modulos):
@@ -47,7 +41,7 @@ class Alumno:
         self.__nombre = nombre
         self.__edad = edad
         self.__altura = altura
-        self.__modulos = modulos
+        self.modulos = modulos
 
 
     def get_id(self):
