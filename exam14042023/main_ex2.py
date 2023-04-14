@@ -29,6 +29,3 @@ moto.mensajes.ok_msg()
 
 moto.frenar(70)
 moto.mensajes.sendVerde(f"Moto multable: {radar1.comprobar(moto)}")
-
-
-
