@@ -51,6 +51,14 @@ class Database:
         """
         self.cursor.execute(f"INSERT INTO DNIs_ordenados_CGA (dni, letra) SELECT DCC.dni, DCC.letra FROM DNIs_correctos_CGA DCC UNION SELECT DCG.dni, DCG.letra FROM DNIs_corregidos_CGA DCG LEFT JOIN DNIs_correctos_CGA DCC ON DCC.dni = DCG.dni WHERE DCC.dni IS NULL")
 
+    def alter_dni(self, dni, letra):
+        """
+        Función que cambia la letra del DNI deseado en la tabla de la bbdd
+        :param dni: Número del DNi al cual se le va a cambiar la letra
+        :param letra: Letra que va a ser cambiada.
+        """
+        self.cursor.execute(f"UPDATE DNIs_origen2_CGA SET letra = '{letra}' WHERE dni = {dni}")
+
     def get_datos(self, nombre_tabla):
         """
         Función que devuelve todos los datos de la tabla deseada

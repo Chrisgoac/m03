@@ -60,6 +60,20 @@ def mostrar_tabla(bbdd, tabla):
         Mensajes.mensaje(f"DNI: {i[0]}, Letra: {i[1]}")
 
 
+def check_dni_cambiar_tablas_origen2(bbdd):
+    """
+    Función que corrige la tabla DNIs_origen2_CGA. La función imprime el valor que ha checkeado y el valor correcto.
+    :param bbdd: Objeto de la base de datos sobre la que se está trbajando.
+    """
+    for i in bbdd.get_datos("DNIs_origen2_CGA"):
+        result = check_dni(i[0], i[1])
+        if result == 0:
+            Mensajes.correcto(f"Valor comprobado: {i[0]}-{i[1]} es correcto")
+        else:
+            Mensajes.mensaje(f"Valor comprobado: {i[0]}-{i[1]} no es correcto, el correcto seria {i[0]}-{result}.")   
+            bbdd.alter_dni(i[0], result) 
+
+
 bbdd = setup_bbdd(dnis_origen)
 mostrar_tabla(bbdd, "DNIs_origen_CGA")
 check_dni_cambiar_tablas(bbdd)
@@ -67,4 +81,6 @@ mostrar_tabla(bbdd, "DNIs_correctos_CGA")
 mostrar_tabla(bbdd, "DNIs_corregidos_CGA")
 bbdd.tabla_ordenada()
 mostrar_tabla(bbdd, "DNIs_ordenados_CGA")
+check_dni_cambiar_tablas_origen2(bbdd)
+mostrar_tabla(bbdd, "DNIs_origen2_CGA")
 bbdd.cerrar()
